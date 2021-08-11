@@ -1,1 +1,4 @@
-app/.version
+node_modules
+build/**
+public/**
+modd.conf

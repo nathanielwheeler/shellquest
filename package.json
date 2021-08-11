@@ -1,0 +1,16 @@
+{
+  "name": "shellquest",
+  "version": "0.1.0",
+  "description": "template",
+  "scripts": {
+    "style": "./scripts/style-build.sh"
+  },
+  "author": "Nathaniel Wheeler",
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "^5.0.2"
+  },
+  "devDependencies": {
+    "sass": "^1.37.4"
+  }
+}
