@@ -2,21 +2,26 @@ package shell
 
 import (
 	"bufio"
+	"embed"
 	"fmt"
 	"os"
 	"strings"
 )
 
+//go:embed rooms.yaml
+var fs embed.FS
+
 // Run will start a game loop, outputting to stdout and saving locally.
 func Run() error {
 	fmt.Println("Shell Quest!  (alpha)")
 
-	save, err := LoadSave()
+	fmt.Println("Loading save...")
+	game, err := LoadGame()
 	if err != nil {
 		return err
 	}
 
-	fmt.Println(RunCmd(save))
+	fmt.Println(game.Cmd("look"))
 	reader := bufio.NewReader(os.Stdin)
 
 	for {
@@ -29,17 +34,16 @@ func Run() error {
 
 		// Prep input
 		input = strings.TrimSuffix(input, "\n")
+		if input == "" {
+			fmt.Println("Please enter something.")
+			continue
+		}
 
-		res := RunCmd(save, strings.Split(input, " ")...)
-    if res == nil {
-      break
-    }
+		res := game.Cmd(strings.Split(input, " ")...)
+		if res == nil {
+			break
+		}
 	}
-  fmt.Println("Exiting...")
-	return nil
-}
-
-// RunCmd will take in a save pointer and variadic commands and make a response, automatically changing the save as needed.
-func RunCmd(save *Save, cmds ...string) (res interface{}) {
+	fmt.Println("Exiting...")
 	return nil
 }

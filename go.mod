@@ -7,4 +7,5 @@ require (
 	github.com/litao91/goldmark-mathjax v0.0.0-20210217064022-a43cf739a50f
 	github.com/yuin/goldmark v1.4.0
 	github.com/yuin/goldmark-meta v1.0.0
+	gopkg.in/yaml.v2 v2.4.0
 )
